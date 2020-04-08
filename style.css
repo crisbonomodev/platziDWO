@@ -1,7 +1,39 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?5t57hk');
+  src:  url('fonts/icomoon.eot?5t57hk#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?5t57hk') format('truetype'),
+    url('fonts/icomoon.woff?5t57hk') format('woff'),
+    url('fonts/icomoon.svg?5t57hk#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-menu:before {
+  content: "\e9bd";
+}
+
+
 /*Estilos para secciones generales*/
 
 body {
-  background-color: #202C36;
+  /*background-color: #202C36;*/
 
   font-family: Lato, sans-serif;
   margin: 0 0 0 0;
@@ -36,7 +68,21 @@ h3 {
   }
 
   /*Header, logo y barra de navegacion*/
-
+.burguer-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0.5);
+  display: none;
+  line-height: 40px;
+  text-align: center;
+  position: fixed;
+  z-index: 5;
+  left: 10px;
+  top: 5px;
+  color: white;
+  font-size: 20px;
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -83,11 +129,11 @@ h3 {
 
 .hero {
   background-color: #27496d;
-  padding: 2em;
+  padding: 2em 0 0 2em;
   color: white;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-around;
   height: auto;
   position: relative;
   overflow: hidden;
@@ -95,7 +141,11 @@ h3 {
   margin-bottom: 0;
 }
 
+.hero-h1 {
+  width: 50%;
+}
 .hero h1 {
+
   font-size: 2em;
   line-height: 1.5em;
   font-weight: 400;
@@ -103,24 +153,41 @@ h3 {
   z-index: 2;
   }
 
+  .youtube-video-frame {
+    width: 50%;
+    height: 0;
+    padding-top: 45%;
 
+    position: relative;
 
-.hero-img img {
+  }
 
-  position: absolute;
+  .youtube-video iframe {
+    position: absolute;
+    top: 1;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+
+.hero-img iframe {
+
+height: 100%;
+width:560px;
+/*  position: absolute;
   z-index: 1;
-  left: 1;
+  left: 0;
   right: 0;
   top:0;
   bottom: 0;
   width: auto;
-  height: 100%;
+  height: 100%;*/
 }
 
-.intro-video-embedded {
-    width: 560px;
-    height: auto;
-}
+
 
 
 .portfolio {
@@ -294,6 +361,7 @@ padding: .3em .3em;
 }
 
 footer {
+  background-color: #202C36;
 display: flex;
 flex-direction: row;
 align-items: center;
@@ -328,8 +396,13 @@ flex-wrap: wrap;
   width: 100%;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 936px) {
 
+.burguer-button {
+  display: block;
+
+
+}
 .header {
   display: block;
   height: auto;
@@ -339,11 +412,30 @@ flex-wrap: wrap;
 }
 
 .navbar {
+  color: white;
   display: block;
+  position: fixed;
+  background-color: #00a8cc;
+  opacity: 0.8;
+  z-index: 4;
+  top: 0;
+  left: -100vw;
+  width: 100vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: .3s;
+}
+
+.navbar.is-active {
+  left: 0;
 }
 
 .navbar a {
   height: 50px;
+  width: 100%;
   justify-content: center;
 }
 
@@ -355,13 +447,34 @@ flex-wrap: wrap;
 
 .hero {
   margin-top: 0px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1em 0 0 0;
 
+}
+
+.intro-video-embedded {
+  padding-top: 2em;
+  height: 315px;
+  width: 560px;
+}
+
+.youtube-video-frame {
+  width: 100%;
 }
 
 .hero-img img {
   left: 0;
   width: 100%;
   height: auto;
+}
+
+.hero-h1 {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  width: 100%;
 }
 
 .hero h1 {
@@ -371,13 +484,18 @@ flex-wrap: wrap;
     padding-bottom: 0;
     margin-bottom: 0;
     margin-top: 0;
+    padding-bottom: 1em;
+    padding-right: .5em;
+    padding-left: 1em;
+
 }
 
 .portfolio {right: 0;}
 
-.entry{
+.entry {
   font-size: 16px;
   margin: .3em 0;
+  flex-direction: column;
 
 }
 
@@ -391,6 +509,11 @@ font-size: .8em;
 
 .entry-description {
 font-size: 1em;
+}
+
+.entry-img-link {
+  width: 90%;
+  height: auto;
 }
 
 .degree {
@@ -460,7 +583,14 @@ footer {
     margin-bottom: 0;
     margin-top: 0;
 
-  }
+}
+
+.intro-video-embedded {
+  padding-top: 2em;
+  height: 315px;
+  width: auto;
+}
+
   .entry{
     font-size: 12px;
     margin: .3em 0;
