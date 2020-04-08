@@ -1,3 +1,35 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?5t57hk');
+  src:  url('fonts/icomoon.eot?5t57hk#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?5t57hk') format('truetype'),
+    url('fonts/icomoon.woff?5t57hk') format('woff'),
+    url('fonts/icomoon.svg?5t57hk#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-menu:before {
+  content: "\e9bd";
+}
+
+
 /*Estilos para secciones generales*/
 
 body {
@@ -37,6 +69,23 @@ h3 {
 
   /*Header, logo y barra de navegacion*/
 
+.burger-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,.8);
+  z-index: 9;
+  color: white;
+  font-size: 30px;
+  position: fixed;
+  display: none;
+  line-height: 40px;
+  text-align: center;
+  left: 5px;
+  top: 5px;
+
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -49,7 +98,7 @@ h3 {
   position: fixed;
   top: 0px;
   left:0px;
-  z-index: 3;
+  z-index: 4;
   }
 
 .logo {
@@ -83,11 +132,11 @@ h3 {
 
 .hero {
   background-color: #27496d;
-  padding: 2em;
+  padding: 0;
   color: white;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   height: auto;
   position: relative;
   overflow: hidden;
@@ -103,7 +152,27 @@ h3 {
   z-index: 2;
   }
 
+.youtube-video-frame {
 
+display: block;
+width: 50%;
+height: 0;
+padding-top: 50%;
+background-color: blue;
+position: relative;
+z-index: 3;
+}
+
+.youtube-video {
+  position: absolute;
+  top: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+}
 
 .hero-img img {
 
@@ -166,9 +235,13 @@ font-size: .8em
   font-size: .8em;
 }
 
-.entry-img-link img {
-  max-width: 100%;
-  height: 150px;
+.entry-img-container {
+  max-width: 30%;
+}
+
+.entry-img-link {
+  width: 100%;
+  height: auto;
 
 }
 
@@ -319,7 +392,11 @@ flex-wrap: wrap;
   width: 100%;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 936px) {
+
+  .navbar.is-active {
+    left:0;
+  }
 
 .header {
   display: block;
@@ -329,8 +406,32 @@ flex-wrap: wrap;
 
 }
 
+.burger-button {
+  display: block;
+}
+
+.navbar {
+  position: fixed;
+  z-index: 8;
+  top: 0;
+  bottom: 0;
+  left:-100vw;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: auto;
+  background-color: #00a8cc;
+  opacity: 0.8;
+  transition: .3s;
+
+}
+
 .navbar {
   display: block;
+  z-index: 7;
 }
 
 .navbar a {
@@ -346,7 +447,13 @@ flex-wrap: wrap;
 
 .hero {
   margin-top: 0px;
+  display: flex;
+  flex-direction: column;
 
+}
+
+.youtube-video-frame {
+width: 100%;
 }
 
 .hero-img img {
@@ -369,6 +476,9 @@ flex-wrap: wrap;
 .entry{
   font-size: 16px;
   margin: .3em 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 
 }
 
@@ -382,6 +492,20 @@ font-size: .8em;
 
 .entry-description {
 font-size: 1em;
+}
+
+.entry-img-container {
+  max-width: 100%;
+
+}
+
+.entry-img-container a {
+  display: flex;
+  justify-content: center;
+}
+
+.entry-img-link {
+  width: 70%;
 }
 
 .degree {
